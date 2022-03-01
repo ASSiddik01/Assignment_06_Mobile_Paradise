@@ -54,7 +54,9 @@ const displayPhone = (phones) => {
                 <div class="card-body">
                     <h5 class="card-title">${phone.phone_name}</h5>
                     <p class="card-text">Brand: <span class="text-primary">${phone.brand}</span> </p>
-                    <button onclick="loadPhoneDetails('${phone.slug}')"  type="button" class="btn btn-outline-primary">Show Details</button>
+                </div>
+                <div class="card-footer border-0 bg-white">
+                  <button onclick="loadPhoneDetails('${phone.slug}')"  type="button" class="btn btn-outline-primary">Show Details</button>
                 </div>
             </div>
         `;
@@ -78,7 +80,7 @@ const loadPhoneDetails = id => {
 const displayPhoneDetails = phone => {
   const features = phone.mainFeatures;
 
-// Other info undefind handle
+  // Other info undefind handle
   let WLAN = phone?.others?.WLAN;
   let Bluetooth = phone?.others?.Bluetooth;
   let GPS = phone?.others?.GPS;
@@ -87,11 +89,11 @@ const displayPhoneDetails = phone => {
   let USB = phone?.others?.USB;
   if (phone.others == undefined) {
     WLAN = 'No info found',
-    Bluetooth = 'No info found',
-    NFC = 'No info found',
-    Radio = 'No info found',
-    USB = 'No info found',
-    GPS = 'No info found';
+      Bluetooth = 'No info found',
+      NFC = 'No info found',
+      Radio = 'No info found',
+      USB = 'No info found',
+      GPS = 'No info found';
   }
 
 
