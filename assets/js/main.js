@@ -4,6 +4,7 @@ const phoneSearch = () => {
   toggleSpinner('block');
   const inputText = document.getElementById('phone_name');
   const searchText = inputText.value.toLowerCase();
+  // Empty search handle
   if (searchText == '' ) {
     alert('Please! search a phone name');
     toggleSpinner('none');
