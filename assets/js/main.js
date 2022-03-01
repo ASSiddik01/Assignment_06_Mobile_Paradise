@@ -27,12 +27,12 @@ const displayPhone = (phones) => {
         const div = document.createElement('div');
         div.classList.add('col')
         div.innerHTML = `
-            <div class="card h-100">
+            <div class="card border-0 shadow-lg h-100 text-center">
                 <img src="${phone.image}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">${phone.phone_name}</h5>
                     <p class="card-text">Brand: <span class="text-primary">${phone.brand}</span> </p>
-                    <button onclick="loadPhoneDetails('${phone.slug}')"  type="button" class="btn btn-outline-dark">Show Details</button>
+                    <button onclick="loadPhoneDetails('${phone.slug}')"  type="button" class="btn btn-outline-primary">Show Details</button>
                 </div>
             </div>
         `;
@@ -53,26 +53,29 @@ const loadPhoneDetails = id => {
 
 // Display Phone Details
 const displayPhoneDetails = phone => {
-    console.log(phone.mainFeatures);
+    console.log(phone);
+
     const phoneDetailes = document.getElementById('phone_detiles');
-    console.log(phoneDetailes);
     phoneDetailes.textContent = '';
     const div = document.createElement('div');
-    div.classList.add('card')
+    div.classList.add()
     div.innerHTML = `
-        <img src="${phone.image}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">${phone.name}</h5>
-            <p class="card-text"><span class="text-primary">Release Date: </span>${phone.releaseDate} </p>
-            <p class="card-text text-primary">Main Feature</p>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><span class="text-primary">Chipset: </span>${phone.mainFeatures.chipSet}</li>
-                <li class="list-group-item"><span class="text-primary">Display Size: </span>${phone.mainFeatures.displaySize}</li>
-                <li class="list-group-item"><span class="text-primary">Memory: </span>${phone.mainFeatures.memory}</li>
-                <li class="list-group-item"><span class="text-primary">Storage: </span>${phone.mainFeatures.storage}</li>
-            </ul>
 
-        </div>
+    <div class="card mb-3 mx-auto" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-lg-4">
+                <img src="${phone.image}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-lg-8">
+                <div class="card-body">
+                  <h5 class="card-title">${phone.name}</h5>
+                  <p class="card-text"><span class="text-primary">Release Date: </span>${phone.releaseDate} </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         `;
     phoneDetailes.appendChild(div);
 }

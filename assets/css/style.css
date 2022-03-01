@@ -4,3 +4,9 @@ ul{
 li{
     list-style: none;
 }
+
+img.card-img-top {
+    height: 125px;
+    width: 100px;
+    margin: 20px auto;
+}
