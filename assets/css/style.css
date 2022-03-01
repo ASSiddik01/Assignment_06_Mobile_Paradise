@@ -14,3 +14,11 @@ img.card-img-top {
 #spinner{
     display: none;
 }
+
+#result_not_found{
+    display: none;
+}
+
+#empty_search{
+    display: none;
+}

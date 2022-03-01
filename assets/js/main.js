@@ -1,12 +1,15 @@
 // Search Phone by input
 const phoneSearch = () => {
-  // Spinner hide
+  // Spinner and error message handle
+  document.getElementById('result_not_found').style.display = 'none';
+  document.getElementById('empty_search').style.display = 'none';
   toggleSpinner('block');
+
   const inputText = document.getElementById('phone_name');
   const searchText = inputText.value.toLowerCase();
   // Empty search handle
   if (searchText == '' ) {
-    alert('Please! search a phone name');
+    document.getElementById('empty_search').style.display = 'block';
     toggleSpinner('none');
     return;
   }
@@ -29,9 +32,14 @@ const loadPhone = (searchText) => {
 
 // Display Phone
 const displayPhone = (phones) => {
+  // Spinner and error message handle
+  if (phones.length == 0) {
+    toggleSpinner('none');
+    document.getElementById('result_not_found').style.display = 'block';
+  }
   // Get max 20 phones
   const searchResult = phones.slice(0, 20);
-  // Get Container form UI
+  // Get Container and empty form UI
   const phoneContainer = document.getElementById('display_phone');
   phoneContainer.textContent = '';
   const phoneDetailes = document.getElementById('phone_detiles');
@@ -68,7 +76,6 @@ const loadPhoneDetails = id => {
 
 // Display Phone Details
 const displayPhoneDetails = phone => {
-
   const features = phone.mainFeatures;
   const others = phone.others;
 
@@ -78,7 +85,6 @@ const displayPhoneDetails = phone => {
     const notFound = 'No date found';
     date = notFound;
   }
-
 
   const phoneDetailes = document.getElementById('phone_detiles');
   phoneDetailes.textContent = '';
@@ -122,8 +128,6 @@ const displayPhoneDetails = phone => {
               </div>
             </div>
           </div>
-
-
         `;
   phoneDetailes.appendChild(div);
 }
