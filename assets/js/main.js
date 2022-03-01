@@ -4,6 +4,11 @@ const phoneSearch = () => {
   toggleSpinner('block');
   const inputText = document.getElementById('phone_name');
   const searchText = inputText.value.toLowerCase();
+  if (searchText == '' ) {
+    alert('Please! search a phone name');
+    toggleSpinner('none');
+    return;
+  }
   loadPhone(searchText);
   inputText.value = '';
 };
