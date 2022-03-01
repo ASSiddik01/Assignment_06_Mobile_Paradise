@@ -1,7 +1,7 @@
 // Search Phone by input
 const phoneSearch = () => {
-    // Spinner hide
-    toggleSpinner('block');
+  // Spinner hide
+  toggleSpinner('block');
   const inputText = document.getElementById('phone_name');
   const searchText = inputText.value.toLowerCase();
   loadPhone(searchText);
@@ -62,10 +62,16 @@ const loadPhoneDetails = id => {
 
 // Display Phone Details
 const displayPhoneDetails = phone => {
-  const phones = phone;
-  console.log(phones);
+
   const features = phone.mainFeatures;
   const others = phone.others;
+
+  // Release Date handle
+  let date = phone.releaseDate;
+  if (date == '') {
+    const notFound = 'No date found';
+    date = notFound;
+  }
 
 
   const phoneDetailes = document.getElementById('phone_detiles');
@@ -81,19 +87,22 @@ const displayPhoneDetails = phone => {
               <div class="col-lg-8">
                 <div class="card-body">
                   <h5 class="card-title">${phone.name}</h5>
-                  <p class="card-text"><span class="text-primary">Release Date: </span>${phone.releaseDate} </p>
+
+                  <p class="card-text"><span class="text-primary">Release Date: </span>${date} </p>
                   <p class="card-text"><span class="text-primary">Main Feature: </span></p>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item"><span class="text-primary">Chipset: </span>${features.chipSet} </li>
                     <li class="list-group-item"><span class="text-primary">Display Size: </span>${features.displaySize} </li>
                     <li class="list-group-item"><span class="text-primary">Memory: </span>${features.memory} </li>
                     <li class="list-group-item"><span class="text-primary">Sotrage: </span>${features.storage} </li>
-                  <hr>
-                    <p class="card-text"><span class="text-primary">Sensors: </span></p>
+
+                  <p class="card-text"><span class="text-primary">Sensors:</span></p>
                     <ul class="list-group list-group-flush">
-                      <p class="card-text"> ${features.sensors} </p>
+                      <li class="list-group-item">${features.sensors}</li>
                     </ul>
+                  
                   <hr>
+
                   <p class="card-text"><span class="text-primary">Other Informations: </span></p>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item"><span class="text-primary">WLAN: </span>${others.WLAN} </li>
