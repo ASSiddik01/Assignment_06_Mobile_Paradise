@@ -1,3 +1,4 @@
+/* Base CSS */
 ul{
     padding: 0;
 }
@@ -5,12 +6,14 @@ li{
     list-style: none;
 }
 
+/* Display Phone */
 img.card-img-top {
     height: 125px;
     width: 100px;
     margin: 20px auto;
 }
 
+/* Spinner and error message */
 #spinner{
     display: none;
 }
