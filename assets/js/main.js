@@ -1,10 +1,17 @@
 // Search Phone by input
 const phoneSearch = () => {
+    // Spinner hide
+    toggleSpinner('block');
   const inputText = document.getElementById('phone_name');
-  const searchText = inputText.value;
+  const searchText = inputText.value.toLowerCase();
   loadPhone(searchText);
   inputText.value = '';
 };
+
+
+const toggleSpinner = displayStyle => {
+  document.getElementById('spinner').style.display = displayStyle;
+}
 
 // Load API Information
 const loadPhone = (searchText) => {
@@ -39,7 +46,8 @@ const displayPhone = (phones) => {
         `;
     // Append Phone div
     phoneContainer.appendChild(div);
-
+    // Spinner hide
+    toggleSpinner('none');
   });
 };
 
