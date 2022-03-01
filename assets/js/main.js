@@ -2,15 +2,13 @@
 const phoneSearch = () => {
     const inputText = document.getElementById('phone_name');
     const searchText = inputText.value;
-    loadData(searchText);
+    loadPhone(searchText);
     inputText.value = '';
 };
 
 // Load API Information
-const loadData = (searchText) => {
+const loadPhone = (searchText) => {
     let url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
-
-    console.log(url);
     fetch(url)
         .then(res => res.json())
         .then(res => displayPhone(res.data));
@@ -35,7 +33,7 @@ const displayPhone = (phones) => {
                 <div class="card-body">
                     <h5 class="card-title">${phone.phone_name}</h5>
                     <p class="card-text">Brand: <span class="text-primary">${phone.brand}</span> </p>
-                    <button type="button" class="btn btn-outline-dark">Show Details</button>
+                    <button onclick="loadPhoneDetails('${phone.slug}')"  type="button" class="btn btn-outline-dark">Show Details</button>
                 </div>
             </div>
         `;
@@ -44,3 +42,13 @@ const displayPhone = (phones) => {
 
     });
 };
+
+
+// Load Phone Details
+const loadPhoneDetails = id => {
+    const url = `https://openapi.programming-hero.com/api/phone/${id}`;
+    console.log(url);
+    fetch(url)
+        .then(res => res.json())
+        .then(data => console.log(data.data));
+}
