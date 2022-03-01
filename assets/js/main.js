@@ -8,7 +8,7 @@ const phoneSearch = () => {
   const inputText = document.getElementById('phone_name');
   const searchText = inputText.value.toLowerCase();
   // Empty search handle
-  if (searchText == '' ) {
+  if (searchText == '') {
     document.getElementById('empty_search').style.display = 'block';
     toggleSpinner('none');
     return;
@@ -77,7 +77,23 @@ const loadPhoneDetails = id => {
 // Display Phone Details
 const displayPhoneDetails = phone => {
   const features = phone.mainFeatures;
-  const others = phone.others;
+
+// Other info undefind handle
+  let WLAN = phone?.others?.WLAN;
+  let Bluetooth = phone?.others?.Bluetooth;
+  let GPS = phone?.others?.GPS;
+  let NFC = phone?.others?.NFC;
+  let Radio = phone?.others?.Radio;
+  let USB = phone?.others?.USB;
+  if (phone.others == undefined) {
+    WLAN = 'No info found',
+    Bluetooth = 'No info found',
+    NFC = 'No info found',
+    Radio = 'No info found',
+    USB = 'No info found',
+    GPS = 'No info found';
+  }
+
 
   // Release Date handle
   let date = phone.releaseDate;
@@ -117,12 +133,12 @@ const displayPhoneDetails = phone => {
 
                   <p class="card-text"><span class="text-primary">Other Informations: </span></p>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><span class="text-primary">WLAN: </span>${others.WLAN} </li>
-                    <li class="list-group-item"><span class="text-primary">Bluetooth: </span>${others.Bluetooth} </li>
-                    <li class="list-group-item"><span class="text-primary">GPS: </span>${others.GPS} </li>
-                    <li class="list-group-item"><span class="text-primary">NFC: </span>${others.NFC} </li>
-                    <li class="list-group-item"><span class="text-primary">Radio: </span>${others.Radio} </li>
-                    <li class="list-group-item"><span class="text-primary">USB: </span>${others.USB} </li>
+                    <li class="list-group-item"><span class="text-primary">WLAN: </span>${WLAN} </li>
+                    <li class="list-group-item"><span class="text-primary">Bluetooth: </span>${Bluetooth} </li>
+                    <li class="list-group-item"><span class="text-primary">GPS: </span>${GPS} </li>
+                    <li class="list-group-item"><span class="text-primary">NFC: </span>${NFC} </li>
+                    <li class="list-group-item"><span class="text-primary">Radio: </span>${Radio} </li>
+                    <li class="list-group-item"><span class="text-primary">USB: </span>${USB} </li>
                   </ul>
                 </div>
               </div>
